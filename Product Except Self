@@ -1,0 +1,16 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        newList = []
+        prodList = []
+        prod = 1
+
+        for i in range(len(nums)):
+            if newList:
+                for j in range(len(newList)):
+                    prod *= newList[j]
+            newList.append(nums[i])
+            for z in range(i+1, len(nums)):
+                prod *= nums[z]
+            prodList.append(prod)
+            prod=1
+        return prodList
