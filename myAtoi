@@ -1,0 +1,32 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        i = 0
+        n = len(s)
+        neg = False
+        tstring = ""
+
+        
+        while i < n and s[i] == " ":
+            i += 1
+
+        if i < n and s[i] == "-":
+            neg = True
+            i += 1
+        elif i < n and s[i] == "+":
+            i += 1
+
+        if i >= n or not s[i].isdigit():
+            return 0
+
+        while i < n and s[i].isdigit():
+            tstring += s[i]
+            i += 1
+
+        if tstring == "":
+            return 0
+
+        num = int(tstring)
+        if neg:
+            num = -num
+
+        return num
