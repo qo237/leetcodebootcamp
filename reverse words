@@ -1,0 +1,24 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        
+        words = []
+        curr = ""
+        rev_str = ""
+
+        for char in s:
+            if char != " ":
+                curr += char
+            else:
+                if curr:             # only append if not empty
+                    words.append(curr)
+                    curr = ""
+        # Add the last word (if string didn’t end with space)
+        if curr:
+            words.append(curr)
+
+        rev_str = ""
+        for word in reversed(words):
+            rev_str += word + " "
+        rev_str = rev_str.strip()
+
+        return rev_str
